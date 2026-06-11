@@ -89,3 +89,30 @@ Explanation:
 =================================================
 
 """
+class Counter:
+    total=0
+    def __init__(self,name):
+        self.name=name; self.count=0
+    def inc(self,step=1):
+        self.count+=step; Counter.total+=step
+    def reset(self):
+        self.count=0
+    def __str__(self):
+        return f"{self.name}: {self.count}"
+    @staticmethod
+    def showtotal():
+        return Counter.total
+
+c1=Counter("clicks")
+c2=Counter("views")
+c3=Counter("downloads")
+
+for i in range(3): c1.inc()
+for i in range(5): c2.inc()
+c3.inc(10)
+c1.reset()
+
+print(c1)
+print(c2)
+print(c3)
+print("Total:",Counter.showtotal())
