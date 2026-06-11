@@ -83,3 +83,30 @@ Explanation:
 =================================================
 
 """
+class BankAccount:
+    def __init__(self, name, accno, bal=0):
+        self.name=name
+        self.accno=accno
+        self.bal=bal if bal>=0 else 0
+
+    def deposit(self, amt):
+        if amt>0: self.bal+=amt
+        else: print("Invalid deposit")
+
+    def withdraw(self, amt):
+        if amt<=0: print("Invalid withdraw")
+        elif amt>self.bal: print("Insufficient funds")
+        else: self.bal-=amt
+
+    def __str__(self):
+        return f"Account[{self.accno}-{self.name}]: ${self.bal}"
+
+
+a1=BankAccount("Alice","001",500)
+a2=BankAccount("Bob","002")
+
+a1.deposit(200); a1.withdraw(100); a1.withdraw(2000)
+a2.deposit(-50); a2.deposit(300)
+
+print(a1)
+print(a2)
